@@ -1,13 +1,18 @@
 package com.example.schoolscientistsexample
 
 import android.util.Log
+import com.example.officialproject.Food
 import com.example.officialproject.FoodList
 import com.google.gson.Gson
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.android.Android
 import io.ktor.client.features.json.GsonSerializer
 import io.ktor.client.features.json.JsonFeature
+import io.ktor.client.request.HttpRequestBuilder
 import io.ktor.client.request.get
+import io.ktor.client.request.post
+import io.ktor.http.URLBuilder
+import io.ktor.http.Url
 import kotlinx.coroutines.runBlocking
 
 class ServerCommand{
@@ -26,17 +31,29 @@ class ServerCommand{
         }
     }
 
-
-    // пример для Андрея Губанова
-    fun createOrder(item: Int): String{
-        return runBlocking { createOrderBody(item) }
-    }
-    suspend fun getFoodList(){
+    public suspend fun makeOrder(list: List<Food>){
         val httpClient = HttpClient(Android) {
             install(JsonFeature) {
                 serializer = GsonSerializer()
             }
         }
-        val list = httpClient.get<FoodList>("https://ms1.networkbox.ru/phone/list/")
+        val request = HttpRequestBuilder()
+        request.body = list
+        httpClient.post(urlString = "ms1.newtonbox.ru/phone/makeorder"){
+            this.body = list
+        }
+    }
+
+    // пример для Андрея Губанова
+    fun createOrder(item: Int): String{
+        return runBlocking { createOrderBody(item) }
+    }
+    suspend fun getFoodList():FoodList{
+        val httpClient = HttpClient(Android) {
+            install(JsonFeature) {
+                serializer = GsonSerializer()
+            }
+        }
+        return httpClient.get<FoodList>("https://ms1.newtonbox.ru/phone/list/")
     }
 }
