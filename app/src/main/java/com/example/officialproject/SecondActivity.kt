@@ -13,8 +13,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.schoolscientistsexample.ServerCommand
+import io.ktor.client.request.HttpRequestBuilder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+
 
 class SecondActivity : AppCompatActivity() {
     private lateinit var rvMenuFood: RecyclerView
@@ -71,5 +73,6 @@ class SecondActivity : AppCompatActivity() {
 
         // Return the size of your dataset (invoked by the layout manager)
         override fun getItemCount() = foodList.size
+
     }
 }
