@@ -1,4 +1,4 @@
-package com.example.officialproject
+/*package com.example.officialproject
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -20,7 +20,7 @@ class ThirdActivity : AppCompatActivity() {
         ServerCommand()
         ShowPinCode1()
     }
-    private fun ShowPinCode1() {
+   private fun ShowPinCode1() {
         val tAndrey = ServerCommand()
         val str = tAndrey.createOrder(4)
 
@@ -29,4 +29,4 @@ class ThirdActivity : AppCompatActivity() {
         val myToast = Toast.makeText(this, str, Toast.LENGTH_SHORT)
         myToast.show()
     }
-}
+} */

@@ -36,7 +36,8 @@ class SecondActivity : AppCompatActivity() {
         val makeOrder = findViewById<Button>(R.id.makeOrder)
         makeOrder.setOnClickListener {
             lifecycleScope.launch {
-                ServerCommand().makeOrder(adapter.order)
+                val pin = ServerCommand().makeOrder(Order(adapter.order))
+                // startActivityForResult
             }
         }
     }
@@ -97,4 +98,3 @@ class SecondActivity : AppCompatActivity() {
 
     }
 }
-

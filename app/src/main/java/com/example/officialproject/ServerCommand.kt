@@ -1,10 +1,7 @@
 package com.example.schoolscientistsexample
 
 import android.util.Log
-import com.example.officialproject.Food
-import com.example.officialproject.FoodList
-import com.example.officialproject.FoodService
-import com.example.officialproject.OrderFood
+import com.example.officialproject.*
 import com.google.gson.Gson
 
 import kotlinx.coroutines.Dispatchers
@@ -33,8 +30,10 @@ class ServerCommand {
         val foodService = retrofit.create(FoodService::class.java)
         return foodService.getFoodList()
     }
-    suspend fun makeOrder(foods: Set<OrderFood>){ //отправка заказа
+    suspend fun makeOrder(foods: Order){ //отправка заказа
         val foodService = retrofit.create(FoodService::class.java)
-        foodService.makeOrder(foods)
+        val hashFoods = HashMap<String, String>()
+        hashFoods.put("order", Gson().toJson(foods.order))
+        foodService.makeOrder(hashFoods)
     }
 }
