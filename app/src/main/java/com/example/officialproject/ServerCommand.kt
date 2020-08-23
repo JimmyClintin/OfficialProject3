@@ -30,10 +30,11 @@ class ServerCommand {
         val foodService = retrofit.create(FoodService::class.java)
         return foodService.getFoodList()
     }
-    suspend fun makeOrder(foods: Order){ //отправка заказа
+    suspend fun makeOrder(foods: Order): Int { //отправка заказа
         val foodService = retrofit.create(FoodService::class.java)
         val hashFoods = HashMap<String, String>()
         hashFoods.put("order", Gson().toJson(foods.order))
-        foodService.makeOrder(hashFoods)
+        val a = foodService.makeOrder(hashFoods)
+        return a
     }
 }
