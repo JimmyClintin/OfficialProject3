@@ -15,8 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.schoolscientistsexample.ServerCommand
 import kotlinx.android.synthetic.main.activity_second.*
-import kotlinx.android.synthetic.main.activity_second.textView
-import kotlinx.android.synthetic.main.activity_third.textView3
+import kotlinx.android.synthetic.main.activity_third.textView
 
 import kotlinx.coroutines.launch
 
@@ -43,8 +42,8 @@ class SecondActivity : AppCompatActivity() {
                 val pin = ServerCommand().makeOrder(Order(adapter.order))
                 // startActivityForResult
                 val intent = Intent(this@SecondActivity, ThirdActivity::class.java)
+                intent.putExtra("yourPin", pin)
                 startActivity(intent)
-                textView.text = pin.toString()
             }
         }
     }

@@ -8,14 +8,14 @@
     tools:context=".ThirdActivity">
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textView"
         android:layout_width="366dp"
         android:layout_height="384dp"
         android:layout_marginStart="29dp"
         android:layout_marginLeft="29dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:text="TextView"
+        android:text="@string/textView"
         android:textColor="#FF9800"
         android:textSize="150dp"
         app:layout_constraintBottom_toBottomOf="parent"

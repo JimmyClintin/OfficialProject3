@@ -8,5 +8,5 @@ interface FoodService { // Cоздаются аннотации
     suspend fun getFoodList(): FoodList
     @POST("phone/makeorder/")  // Cоздается Post-запрос
     @FormUrlEncoded
-    suspend fun makeOrder(@FieldMap foods: HashMap<String, String>):Int
+    suspend fun makeOrder(@FieldMap foods: HashMap<String, String>):String
 }

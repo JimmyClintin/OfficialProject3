@@ -3,4 +3,5 @@
     <string name="RandomMe">меню</string>
     <string name="ledOn">Чай</string>
     <string name="ledoff">Бананы</string>
+    <string name="textView">TextView</string>
 </resources>
