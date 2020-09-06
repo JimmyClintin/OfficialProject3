@@ -9,10 +9,10 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvFoodMenu"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="90dp"
-        tools:layout_editor_absoluteY="-37dp"></androidx.recyclerview.widget.RecyclerView>
+        android:layout_width="417dp"
+        android:layout_height="718dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="13dp"></androidx.recyclerview.widget.RecyclerView>
 
     <Button
         android:id="@+id/makeOrder"

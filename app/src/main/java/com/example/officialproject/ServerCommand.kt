@@ -13,11 +13,12 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class ServerCommand {
-    var inter = 1
     val interceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
 
-    val okClient = OkHttpClient.Builder().addInterceptor(interceptor).retryOnConnectionFailure(true).build()
-    val retrofit = Retrofit.Builder().baseUrl("https://ms1.newtonbox.ru/").addConverterFactory(GsonConverterFactory.create()).client(okClient).build()
+    val okClient =
+        OkHttpClient.Builder().addInterceptor(interceptor).retryOnConnectionFailure(true).build()
+    val retrofit = Retrofit.Builder().baseUrl("https://ms1.newtonbox.ru/")
+        .addConverterFactory(GsonConverterFactory.create()).client(okClient).build()
 
 // {"name":"Andrey", "last_name":"Gubanov"} class name = "andrey" last_name= (это просто пример)
 
@@ -30,11 +31,13 @@ class ServerCommand {
         val foodService = retrofit.create(FoodService::class.java)
         return foodService.getFoodList()
     }
+
     suspend fun makeOrder(foods: Order): String { //отправка заказа
         val foodService = retrofit.create(FoodService::class.java)
         val hashFoods = HashMap<String, String>()
         hashFoods.put("order", Gson().toJson(foods.order))
         val a = foodService.makeOrder(hashFoods)
         return a
+
     }
 }

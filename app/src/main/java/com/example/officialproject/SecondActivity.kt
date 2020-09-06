@@ -14,6 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.schoolscientistsexample.ServerCommand
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_second.*
 import kotlinx.android.synthetic.main.activity_third.textView
 
@@ -40,6 +41,10 @@ class SecondActivity : AppCompatActivity() {
         makeOrder.setOnClickListener {
             lifecycleScope.launch {
                 val pin = ServerCommand().makeOrder(Order(adapter.order))
+                button.setOnClickListener {
+                    it.isEnabled = false
+                    it.postDelayed({ it.isEnabled = true }, 60)
+                }
                 // startActivityForResult
                 val intent = Intent(this@SecondActivity, ThirdActivity::class.java)
                 intent.putExtra("yourPin", pin)
